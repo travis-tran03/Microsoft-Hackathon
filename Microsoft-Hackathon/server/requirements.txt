@@ -1,0 +1,12 @@
+pyodbc
+fastapi
+uvicorn[standard]
+pydantic
+azure-identity
+Flask
+Flask-SQLAlchemy
+flask-marshmallow
+marshmallow-sqlalchemy
+SQLAlchemy
+python-dotenv
+marshmallow
