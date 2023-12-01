@@ -46,10 +46,11 @@ with app.app_context(): MUST USE LINE
 def helloWorld():
     with app.app_context():
         with db.engine.connect() as conn:
-            query = "SELECT * FROM AllMajors"
+            columns = request.args.get('columns')
+
+            query = f"SELECT {columns} FROM AllMajors"
             result = conn.execute(text(query))
 
-            #names = [x[0] for x in result.Department]
             rows = result.fetchall()
 
             rowDF = pd.DataFrame(rows)
@@ -60,25 +61,22 @@ def helloWorld():
 
     return df.to_json()
 
-@app.route("/", methods=['GET'])
-def postCSV():
+@app.route("/all", methods=['GET'])
+def getAllData():
     with app.app_context():
         with db.engine.connect() as conn:
-            df1=df.copy().astype('string')
-            #df1=df1.astype(str)
-            listValues=df1.values.tolist()
-            print(df1.info())
-            query = (f"INSERT INTO dbo.AllMajors (Departments, Majors, Majors_href, Description) VALUES (?, ?, ?, ?)", listValues)
-            conn.execute(text(query))
-            
+            splitDF.to_sql("AllMajors", conn, if_exists="replace")
+
             query = f"SELECT * FROM dbo.AllMajors"
             result = conn.execute(text(query))
 
             rows = result.fetchall()
 
-            testDF = pd.DataFrame(rows)
+            resultDF = pd.DataFrame(rows)
 
-            print(testDF.head(10))
+            print(resultDF.head(10))
+
+            return resultDF.head(10).to_json()
 
 
 
