@@ -10,3 +10,4 @@ marshmallow-sqlalchemy
 SQLAlchemy
 python-dotenv
 marshmallow
+pandas
