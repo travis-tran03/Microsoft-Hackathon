@@ -1,10 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import axios from 'axios'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [data, setData] = useState(0);
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:5000/all').then((res) => {
+      console.log(res.data);
+      setData(res.data);
+    })
+  }, [])
+
+  // element.split('\n')[0] => GET RID OF EXTRA TEXT IN DEPARTMENTS
+  // element.replace('Majors: ', ''); => GET RID OF MAJORS IN MAJORS
 
   return (
     <>
@@ -27,6 +39,13 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
+      </p>
+      <p>
+        {data && Object.values(data.Departments).map((element) => {
+          return(
+            <div> {element.split('\n')[0]} </div>
+          )
+        })}
       </p>
     </>
   )
