@@ -67,7 +67,7 @@ def getAllData():
         with db.engine.connect() as conn:
             splitDF.to_sql("AllMajors", conn, if_exists="replace")
 
-            query = f"SELECT * FROM dbo.AllMajors"
+            query = f"SELECT * FROM AllMajors"
             result = conn.execute(text(query))
 
             rows = result.fetchall()
