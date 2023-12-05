@@ -45,27 +45,21 @@ with app.app_context(): MUST USE LINE
             print(row.Department)
 '''
 # API Routes
-@app.route("/find", methods=['GET'])
+@app.route("/find", methods=['POST'])
 def findMajor():
     with app.app_context():
         with db.engine.connect() as conn:
             # Example call: http://{domain}:PORTS/find?user_text="I am here today and alive."
-            userText = request.args.get('user_text')
-            # Implement AI Sevices Function here (Probably put in different file)
+            #userText = request.args.get('user_text')
+            userText = request.json['user_text']
             
+            # Implement AI Sevices Function here
+            results = azureapi(userText)
 
-            azureapi(userText)
-
-            query = f"SELECT * FROM AllMajors"
-            result = conn.execute(text(query))
-
-            rows = result.fetchall()
-
-            rowDF = pd.DataFrame(rows)
-
-            print(rowDF.head(10))
+            # List Comprehension to get columns from db based on major results
+            #finalResult = [pd.DataFrame(conn.execute(text(f"SELECT * FROM AllMajors WHERE Majors = '{major}'")).fetchall()).to_json() for major in results]
         
-            return rowDF.head(10).to_json()
+            return results
 
 @app.route("/get", methods=['GET'])
 def getColumns():

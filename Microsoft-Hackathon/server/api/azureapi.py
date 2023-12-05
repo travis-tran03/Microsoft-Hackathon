@@ -34,6 +34,3 @@ def azureapi(input):
             print ("")
 
     return results
-
-
-print(azureapi("I like to think I was born with a pencil in hand. I'm extremely passionate about art and have always been drawn to telling stories through creative mediums, whether it be as simple as a doodle in a sketchbook or an expertly painted portrait.  I dream of leaving behind projects that form an impact on others so I will be remembered even in the future."))
