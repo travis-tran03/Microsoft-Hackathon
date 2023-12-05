@@ -23,9 +23,16 @@ def azureapi(input):
     # Make a GET request
     response = requests.get(url, headers=headers)
 
+    results = []
+
     for i in range (3):
         try:
-            return response.json()["value"][i]["Majors"]
+            results.append(response.json()["value"][i]["Majors"])
 
         except:
             print ("")
+
+    return results
+
+
+print(azureapi(""))
