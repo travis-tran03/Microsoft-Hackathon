@@ -1,43 +1,52 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
+const Results = () => {
+const [showData, setShowData] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
-
-function Results(input) {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(false);
-    useEffect(() => {
       const fetchData = async () => {
         setLoading(true);
-        const response = await axios.post('http://127.0.0.1:5000/find', {user_text: input})
-       .then((res) => {setData(res.data); setLoading(false);})
+        const response = await axios.post('http://127.0.0.1:5000/find', {user_text: inputValue})
+       .then((res) => {setData(res.data);console.log(res.data); setLoading(false);})
        .catch((err) => console.log(err));
         
         console.log(response)
         }
-      fetchData()
-      }
-      ,[]
-    )
-    
-  
 
+  const inputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
-  // element.split('\n')[0] => GET RID OF EXTRA TEXT IN DEPARTMENTS
-  // element.replace('Majors: ', ''); => GET RID OF MAJORS IN MAJORS
+  const inputStyle = {
+    width: '300px', 
+    padding: '10px', 
+  };
 
-    return (
+  return (
+    <>
+    <div>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={inputChange}
+        placeholder="Enter things your interests and hobbies here :)"
+        style={inputStyle} 
+      />
+    </div>
+    <button onClick={() => [fetchData()]}> FIND OUT NOW!!! </button>
         <>
             <div>
-               {!loading ? Object.values(data).length > 0 && Object.values(data.index).map((index) => {
-                    return(
-                    <div key={index}> {data.Departments[index].split('\n')[0]} : {data.Majors[index].replace('Major: ', '')} </div>
-                    )
-               }) : <div> Generating Results ... </div>
+               {!loading ? data.length > 0 && data.map((major) => {
+                return(<div>{major} </div>)
+               })  : <div> Generating Results ... </div>
                }
             </div>
       </>
-    )
-}
+    </>
+  );
+};
 
 export default Results;

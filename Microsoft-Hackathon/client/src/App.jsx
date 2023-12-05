@@ -21,6 +21,8 @@ function App() {
       </div>
       <h1>College Major Quiz</h1>
       <p>Tell us about youself. What are your passions in life. Your life goals. What interests you?</p>
+      <p>Let artificial intelligence help provide insight into choosing your career path!</p>
+
 
 
     </>

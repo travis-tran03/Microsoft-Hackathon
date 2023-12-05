@@ -57,9 +57,9 @@ def findMajor():
             results = azureapi(userText)
 
             # List Comprehension to get columns from db based on major results
-            finalResult = [pd.DataFrame(conn.execute(text(f"SELECT * FROM AllMajors WHERE Majors = '{major}'")).fetchall()).to_json() for major in results]
+            #finalResult = [pd.DataFrame(conn.execute(text(f"SELECT * FROM AllMajors WHERE Majors = '{major}'")).fetchall()).to_json() for major in results]
         
-            return finalResult
+            return results
 
 @app.route("/get", methods=['GET'])
 def getColumns():
