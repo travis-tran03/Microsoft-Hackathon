@@ -33,6 +33,3 @@ def azureapi(input):
             print ("")
 
     return results
-
-
-print(azureapi(""))
