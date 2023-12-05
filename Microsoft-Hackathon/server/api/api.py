@@ -10,6 +10,8 @@ from extensions import db
 import pandas as pd
 import pandas.io.sql as psql
 from flask_cors import CORS
+from azureapi import azureapi
+
 
 # Download CSV
 df = pd.read_csv('Microsoft-Hackathon/server/All_Majors_1.csv').rename(columns={"Majors-href": "Majors_href"})
@@ -50,11 +52,9 @@ def findMajor():
             # Example call: http://{domain}:PORTS/find?user_text="I am here today and alive."
             userText = request.args.get('user_text')
             # Implement AI Sevices Function here (Probably put in different file)
-            '''
-            SOME
-            CODE
-            HERE
-            '''
+            
+
+            azureapi(userText)
 
             query = f"SELECT * FROM AllMajors"
             result = conn.execute(text(query))
