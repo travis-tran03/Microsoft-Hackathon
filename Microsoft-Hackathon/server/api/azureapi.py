@@ -1,22 +1,31 @@
 import requests
+from dotenv import load_dotenv
+import os
 
-service_name = "mhservice"
-api_version = "2023-11-01"
-admin_key = "Nc6MjgForLgwp0UbIokY8eZyhXcR5fscArVaeUW8cjAzSeAZZp28"
-index_name = "azuresql-index3"
-input = "tech"
+def azureapi(input):
+    load_dotenv("Microsoft-Hackathon/server/.env")
 
-# Define the API endpoint
-url = f"https://{service_name}.search.windows.net/indexes/{index_name}/docs?api-version={api_version}&search={input}"
+    service_name = "mhservice"
+    api_version = "2023-11-01"
+    admin_key = os.getenv("ADMIN_KEY")
+    index_name = "azuresql-index3"
 
 
-# Define headers
-headers = {
-    "Content-Type": "application/json",
-    "api-key": admin_key  # Use api-key for authentication
-}
+    url = f"https://{service_name}.search.windows.net/indexes/{index_name}/docs?api-version={api_version}&search={input}"
 
-# Make a GET request to search
-response = requests.get(url, headers=headers)
 
-print (response.json())
+    # Define headers
+    headers = {
+        "Content-Type": "application/json",
+        "api-key": admin_key
+    }
+
+    # Make a GET request
+    response = requests.get(url, headers=headers)
+
+    for i in range (3):
+        try:
+            return response.json()["value"][i]["Majors"]
+
+        except:
+            print ("")
