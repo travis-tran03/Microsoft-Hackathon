@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
 
 const TextBox = () => {
-  // State to manage the input value
+
   const [inputValue, setInputValue] = useState('');
 
-  // Event handler to update the state when the input value changes
-  const handleInputChange = (event) => {
+
+  const inputChange = (event) => {
     setInputValue(event.target.value);
   };
 
-  // Inline styles to set the width of the input
   const inputStyle = {
-    width: '300px', // Adjust the width as needed
-    padding: '10px', // Optional: Add padding for better appearance
+    width: '300px', 
+    padding: '10px', 
   };
 
   return (
     <div>
-      {/* Input element with value and onChange event */}
       <input
         type="text"
         value={inputValue}
-        onChange={handleInputChange}
+        onChange={inputChange}
         placeholder="Enter information about yourself :)"
-        style={inputStyle} // Apply the inline styles
+        style={inputStyle} 
       />
-      {/* Display the current input value */}
-      <p>You typed: {inputValue}</p>
     </div>
   );
 };
