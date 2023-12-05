@@ -8,7 +8,8 @@ def azureapi(input):
     service_name = "mhservice"
     api_version = "2023-11-01"
     admin_key = os.getenv("ADMIN_KEY")
-    index_name = "azuresql-index3"
+    #index_name = "azuresql-index3"
+    index_name = "keyphrases-index2"
 
 
     url = f"https://{service_name}.search.windows.net/indexes/{index_name}/docs?api-version={api_version}&search={input}"
@@ -35,4 +36,4 @@ def azureapi(input):
     return results
 
 
-print(azureapi(""))
+print(azureapi("I like to think I was born with a pencil in hand. I'm extremely passionate about art and have always been drawn to telling stories through creative mediums, whether it be as simple as a doodle in a sketchbook or an expertly painted portrait.  I dream of leaving behind projects that form an impact on others so I will be remembered even in the future."))
