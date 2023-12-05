@@ -22,6 +22,7 @@ connectionString = os.environ.get("AZURESQLCONNECTIONSTRING")
 
 params = parse.quote_plus(connectionString)
 
+# Initialize Flask app
 app = Flask(__name__)
 CORS(app)
 
@@ -41,9 +42,33 @@ with app.app_context(): MUST USE LINE
         for row in result:
             print(row.Department)
 '''
+# API Routes
+@app.route("/find", methods=['GET'])
+def findMajor():
+    with app.app_context():
+        with db.engine.connect() as conn:
+            # Example call: http://{domain}:PORTS/find?user_text="I am here today and alive."
+            userText = request.args.get('user_text')
+            # Implement AI Sevices Function here (Probably put in different file)
+            '''
+            SOME
+            CODE
+            HERE
+            '''
 
-@app.route("/major", methods=['GET'])
-def helloWorld():
+            query = f"SELECT * FROM AllMajors"
+            result = conn.execute(text(query))
+
+            rows = result.fetchall()
+
+            rowDF = pd.DataFrame(rows)
+
+            print(rowDF.head(10))
+        
+            return rowDF.head(10).to_json()
+
+@app.route("/get", methods=['GET'])
+def getColumns():
     with app.app_context():
         with db.engine.connect() as conn:
             columns = request.args.get('columns')
@@ -67,7 +92,7 @@ def getAllData():
         with db.engine.connect() as conn:
             splitDF.to_sql("AllMajors", conn, if_exists="replace")
 
-            query = f"SELECT * FROM dbo.AllMajors"
+            query = f"SELECT * FROM AllMajors"
             result = conn.execute(text(query))
 
             rows = result.fetchall()
