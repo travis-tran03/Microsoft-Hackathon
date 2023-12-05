@@ -20,6 +20,8 @@ function App() {
         </a>
       </div>
       <h1>College Major Quiz</h1>
+      <p>Tell us about youself. What are your passions in life. Your life goals. What interests you?</p>
+
 
     </>
   )

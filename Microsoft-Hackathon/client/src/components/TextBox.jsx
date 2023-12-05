@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Results from './Results.jsx'
 
 const TextBox = () => {
 
@@ -15,15 +16,19 @@ const TextBox = () => {
   };
 
   return (
+    <>
     <div>
       <input
         type="text"
         value={inputValue}
         onChange={inputChange}
-        placeholder="Enter information about yourself :)"
+        placeholder="Enter things your interests and hobbies here :)"
         style={inputStyle} 
       />
     </div>
+    <button onClick={() => {return<Results input = {inputValue}/>}}> CLick Me </button>
+    </>
+
   );
 };
 

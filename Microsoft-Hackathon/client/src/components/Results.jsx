@@ -2,25 +2,32 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-function Results() {
+
+function Results(input) {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(false);
-
-    const fetchData = async () => {
+    useEffect(() => {
+      const fetchData = async () => {
         setLoading(true);
-        const response = await axios.get('http://127.0.0.1:5000/all')
+        const response = await axios.post('http://127.0.0.1:5000/find', {user_text: input})
        .then((res) => {setData(res.data); setLoading(false);})
        .catch((err) => console.log(err));
         
         console.log(response)
-    }
+        }
+      fetchData()
+      }
+      ,[]
+    )
+    
+  
+
 
   // element.split('\n')[0] => GET RID OF EXTRA TEXT IN DEPARTMENTS
   // element.replace('Majors: ', ''); => GET RID OF MAJORS IN MAJORS
 
     return (
         <>
-        <button onClick={() => {fetchData()}}> CLick Me </button>
             <div>
                {!loading ? Object.values(data).length > 0 && Object.values(data.index).map((index) => {
                     return(
