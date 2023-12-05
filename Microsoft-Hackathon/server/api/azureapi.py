@@ -19,10 +19,4 @@ headers = {
 # Make a GET request to search
 response = requests.get(url, headers=headers)
 
-# Check the response status
-if response.status_code == 200:
-    # Process and display the search results
-    print(response.json())
-
-else:
-    print(f"Error: {response.status_code} - {response.text}")
+print (response.json())
