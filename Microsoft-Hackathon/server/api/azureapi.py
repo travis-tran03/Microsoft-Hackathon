@@ -8,7 +8,8 @@ def azureapi(input):
     service_name = "mhservice"
     api_version = "2023-11-01"
     admin_key = os.getenv("ADMIN_KEY")
-    index_name = "azuresql-index3"
+    #index_name = "azuresql-index3"
+    index_name = "keyphrases-index2"
 
 
     url = f"https://{service_name}.search.windows.net/indexes/{index_name}/docs?api-version={api_version}&search={input}"
