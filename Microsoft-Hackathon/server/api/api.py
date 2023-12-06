@@ -18,21 +18,22 @@ df = pd.read_csv('Microsoft-Hackathon/server/All_Majors_1.csv').rename(columns={
 splitDF = df[['Departments', 'Majors', 'Majors_href', 'Description']]
 
 # Connect to Databsae
-load_dotenv("Microsoft-Hackathon/server/.env")
+#load_dotenv("Microsoft-Hackathon/server/.env")
 
-connectionString = os.environ.get("AZURESQLCONNECTIONSTRING")
+#connectionString = os.environ.get("AZURESQLCONNECTIONSTRING")
 
-params = parse.quote_plus(connectionString)
+#params = parse.quote_plus(connectionString)
 
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
 
+'''
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc:///?odbc_connect=%s' % params
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
-
+'''
 '''
 EXAMPLE HOW TO USE SQLALCHEMY WITH AZURE SQL DATABASE
 
@@ -48,19 +49,16 @@ with app.app_context(): MUST USE LINE
 @app.route("/find", methods=['POST'])
 def findMajor():
     with app.app_context():
-        with db.engine.connect() as conn:
-            # Example call: http://{domain}:PORTS/find?user_text="I am here today and alive."
-            #userText = request.args.get('user_text')
-            userText = request.json['user_text']
+        # Example call: http://{domain}:PORTS/find?user_text="I am here today and alive."
+        #userText = request.args.get('user_text')
+        userText = request.json['user_text']
             
-            # Implement AI Sevices Function here
-            results = azureapi(userText)
-
-            # List Comprehension to get columns from db based on major results
-            #finalResult = [pd.DataFrame(conn.execute(text(f"SELECT * FROM AllMajors WHERE Majors = '{major}'")).fetchall()).to_json() for major in results]
+        # Implement AI Sevices Function here
+        results = azureapi(userText)
         
-            return results
+        return results
 
+'''
 @app.route("/get", methods=['GET'])
 def getColumns():
     with app.app_context():
@@ -96,8 +94,8 @@ def getAllData():
             print(resultDF.head(10))
 
             return resultDF.head(10).to_json()
-
+'''
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000)
