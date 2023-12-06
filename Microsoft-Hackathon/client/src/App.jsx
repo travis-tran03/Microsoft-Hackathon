@@ -21,8 +21,8 @@ function App() {
         </a>
       </div>
       <h1>College Major Suggestion Tool</h1>
-      <p>Let artificial intelligence help provide insight into choosing your career path! </p>
-      <p>Tell us about youself. What are your passions in life. Your life goals. What interests you?</p>
+      <p style={{fontSize: '2vh'}}>Let artificial intelligence help provide insight into choosing your career path! </p>
+      <p style={{fontSize: '2vh'}}>Tell us about youself. What are your passions in life. Your life goals. What interests you?</p>
     </>
   )
 }

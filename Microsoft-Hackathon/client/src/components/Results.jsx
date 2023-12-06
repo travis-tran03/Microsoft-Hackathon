@@ -49,7 +49,7 @@ const [showData, setShowData] = useState(false);
                     <div className='majorContainer'>
                       <div style={{marginBottom: "3vh", fontSize: "3vh", fontWeight: "bold"}}>{major.Majors}</div>
                       <div style={{marginBottom: "3vh", fontSize: "1.2vh"}}>{major.Description} </div>
-                      <div style={{marginBottom: "3vh"}}>{major.Majors_href} </div>
+                      <a style={{marginBottom: "3vh", fontSize: "2.2vh"}} href={major.Majors_href} target='_blank'> {major.Majors_href} </a>
                     </div>
                   </>
                )})  : <div> Generating Results ... </div>
