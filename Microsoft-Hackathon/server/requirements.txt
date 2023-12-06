@@ -11,4 +11,4 @@ SQLAlchemy
 python-dotenv
 marshmallow
 pandas
-gunicorn=21.2.0
+gunicorn
