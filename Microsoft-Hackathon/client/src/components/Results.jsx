@@ -9,7 +9,7 @@ const [showData, setShowData] = useState(false);
     const [loading, setLoading] = useState(false);
       const fetchData = async () => {
         setLoading(true);
-        const response = await axios.post('http://127.0.0.1:5000/find', {user_text: inputValue})
+        const response = await axios.post('http://127.0.0.1:8000/find', {user_text: inputValue})
        .then((res) => {setData(res.data);console.log(res.data); setLoading(false);})
        .catch((err) => console.log(err));
         

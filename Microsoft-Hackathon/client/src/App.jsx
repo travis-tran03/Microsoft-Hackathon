@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios'
-import myDrawing from './assets/Untitled.jpg'
+import myDrawing from './assets/canvas.png'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,17 +14,15 @@ function App() {
 
   return (
     <>
+    
       <div>
         <a>
         <img src={myDrawing} alt="college image"/>
         </a>
       </div>
-      <h1>College Major Quiz</h1>
+      <h1>College Major Suggestion Tool</h1>
+      <p>Let artificial intelligence help provide insight into choosing your career path! </p>
       <p>Tell us about youself. What are your passions in life. Your life goals. What interests you?</p>
-      <p>Let artificial intelligence help provide insight into choosing your career path!</p>
-
-
-
     </>
   )
 }
