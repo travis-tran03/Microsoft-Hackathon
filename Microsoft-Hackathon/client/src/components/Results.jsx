@@ -36,7 +36,7 @@ const [showData, setShowData] = useState(false);
         type="text"
         value={inputValue}
         onChange={inputChange}
-        placeholder="Enter things your interests and hobbies here :)"
+        placeholder="Enter your interests and hobbies here :)"
         style={inputStyle} 
       />
     </div>
