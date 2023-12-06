@@ -21,8 +21,12 @@ const [showData, setShowData] = useState(false);
   };
 
   const inputStyle = {
-    width: '300px', 
-    padding: '10px', 
+    width: '50vh',
+    height: '15vh',
+    padding: '10px',
+    'background-color': 'rgb(220, 189, 151)',
+    color: 'black',
+    fontSize: '1.5vh',
   };
 
   return (
@@ -36,12 +40,19 @@ const [showData, setShowData] = useState(false);
         style={inputStyle} 
       />
     </div>
-    <button onClick={() => [fetchData()]}> FIND OUT NOW!!! </button>
+    <button style={{marginTop: "2vh", color: 'black', backgroundColor: 'rgb(220, 189, 151)', border: '0.3vh solid black', fontWeight: 'bold'}} onClick={() => [fetchData()]}> FIND OUT NOW!!! </button>
         <>
             <div>
                {!loading ? data.length > 0 && data.map((major) => {
-                return(<div>{major} </div>)
-               })  : <div> Generating Results ... </div>
+                return(
+                  <>
+                    <div className='majorContainer'>
+                      <div style={{marginBottom: "3vh", fontSize: "3vh", fontWeight: "bold"}}>{major.Majors}</div>
+                      <div style={{marginBottom: "3vh", fontSize: "1.2vh"}}>{major.Description} </div>
+                      <div style={{marginBottom: "3vh"}}>{major.Majors_href} </div>
+                    </div>
+                  </>
+               )})  : <div> Generating Results ... </div>
                }
             </div>
       </>

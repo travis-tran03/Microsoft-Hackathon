@@ -28,7 +28,7 @@ def azureapi(input):
 
     for i in range (3):
         try:
-            results.append(response.json()["value"][i]["Majors"])
+            results.append(response.json()["value"][i])
 
         except:
             print ("")
