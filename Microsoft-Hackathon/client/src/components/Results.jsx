@@ -21,8 +21,8 @@ const [showData, setShowData] = useState(false);
   };
 
   const inputStyle = {
-    width: '50vh',
-    height: '15vh',
+    width: '130vh',
+    height: '5vh',
     padding: '10px',
     'background-color': 'rgb(220, 189, 151)',
     color: 'black',
@@ -40,7 +40,7 @@ const [showData, setShowData] = useState(false);
         style={inputStyle} 
       />
     </div>
-    <button style={{marginTop: "2vh", color: 'black', backgroundColor: 'rgb(220, 189, 151)', border: '0.3vh solid black', fontWeight: 'bold'}} onClick={() => [fetchData()]}> FIND OUT NOW!!! </button>
+    <button style={{marginTop: "5vh", marginBottom: "7vh", color: 'black', backgroundColor: 'rgb(220, 189, 151)', border: '0.3vh solid black', fontWeight: 'bold'}} onClick={() => [fetchData()]}> FIND OUT NOW! </button>
         <>
             <div>
                {!loading ? data.length > 0 && data.map((major) => {
@@ -48,7 +48,7 @@ const [showData, setShowData] = useState(false);
                   <>
                     <div className='majorContainer'>
                       <div style={{marginBottom: "3vh", fontSize: "3vh", fontWeight: "bold"}}>{major.Majors}</div>
-                      <div style={{marginBottom: "3vh", fontSize: "1.2vh"}}>{major.Description} </div>
+                      <div style={{marginBottom: "3vh", fontSize: "1.6vh"}}>{major.Description} </div>
                       <a style={{marginBottom: "3vh", fontSize: "2.2vh"}} href={major.Majors_href} target='_blank'> {major.Majors_href} </a>
                     </div>
                   </>
