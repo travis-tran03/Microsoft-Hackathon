@@ -1,1 +1,1 @@
-gunicorn -w 2 -b 0.0.0 --chdir Microsoft-Hackathon.server app:app --timeout 1800
+gunicorn -w 2 -b 0.0.0 --chdir Microsoft-Hackathon/Microsoft-Hackathon/server app:app --timeout 1800
