@@ -62,6 +62,14 @@ def create_app():
             results = azureapi(userText)
             
             return results
+        
+    @app.route("/get", methods='GET')
+    def get():
+        return jsonify("Hello World")
+        
+    @app.route("/")
+    def page():
+        return "Hello World"
 
     '''
     @app.route("/get", methods=['GET'])
