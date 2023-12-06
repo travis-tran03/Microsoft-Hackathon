@@ -1,1 +1,1 @@
-gunicorn --bind=0.0.0.0 --timeout 600 Microsoft-Hackathon/server/api/api:app
+gunicorn -w 2 -b 0.0.0 --chdir Microsoft-Hackathon/server run:app --timeout 600
